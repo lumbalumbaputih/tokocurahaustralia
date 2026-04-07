@@ -224,12 +224,13 @@ body{
 </section>
 
 <script>
+const CARD_STAGGER_DELAY=0.09;
 const pageObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>entry.target.classList.toggle('active',entry.isIntersecting));
 },{threshold:.55});
 document.querySelectorAll('.page').forEach(section=>pageObserver.observe(section));
 document.querySelectorAll('.review-card').forEach((card,index)=>{
-  card.style.transitionDelay=`${index*0.09}s`;
+  card.style.transitionDelay=`${index*CARD_STAGGER_DELAY}s`;
 });
 </script>
 </body>
