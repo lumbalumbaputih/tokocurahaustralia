@@ -28,8 +28,8 @@ body{
 }
 
 .page{
-  min-height:100svh;
   min-height:100vh;
+  min-height:100svh;
   scroll-snap-align:start;
   scroll-snap-stop:always;
   position:relative;
@@ -144,8 +144,6 @@ body{
   transition:opacity .55s ease,transform .55s ease;
 }
 .page.active .review-card{opacity:1;transform:translateY(0)}
-.page.active .review-card:nth-child(2){transition-delay:.09s}
-.page.active .review-card:nth-child(3){transition-delay:.18s}
 .card-stars{color:var(--yellow);font-size:.85rem;margin-bottom:.3rem}
 .card-text{font-size:.88rem;line-height:1.5}
 .card-author{font-size:.78rem;opacity:.72;margin-top:.35rem}
@@ -176,7 +174,7 @@ body{
 </head>
 <body>
 
-<section class="page hero active">
+<section class="page hero">
   <div class="hero-bg-orb orb-1"></div>
   <div class="hero-bg-orb orb-2"></div>
   <div class="hero-bg-orb orb-3"></div>
@@ -230,6 +228,9 @@ const pageObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>entry.target.classList.toggle('active',entry.isIntersecting));
 },{threshold:.55});
 document.querySelectorAll('.page').forEach(section=>pageObserver.observe(section));
+document.querySelectorAll('.review-card').forEach((card,index)=>{
+  card.style.transitionDelay=`${index*0.09}s`;
+});
 </script>
 </body>
 </html>
