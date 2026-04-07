@@ -86,7 +86,7 @@ body{
 .dino-left,.dino-right{
   position:absolute;
   bottom:12%;
-  font-size:clamp(40px,7vw,85px);
+  font-size:clamp(2.5rem,7vw,5.3rem);
   line-height:1;
   animation:wiggle 4s ease-in-out infinite;
 }
@@ -225,9 +225,10 @@ body{
 
 <script>
 const CARD_STAGGER_DELAY = 0.09;
+const ACTIVATION_THRESHOLD = 0.55;
 const pageObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>entry.target.classList.toggle('active',entry.isIntersecting));
-},{threshold:.55});
+},{threshold:ACTIVATION_THRESHOLD});
 document.querySelectorAll('.page').forEach(section=>pageObserver.observe(section));
 document.querySelectorAll('.review-card').forEach((card,index)=>{
   card.style.transitionDelay=`${index*CARD_STAGGER_DELAY}s`;
