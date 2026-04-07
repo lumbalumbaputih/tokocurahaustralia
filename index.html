@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toko Curah Australia - Shop with Alia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1DBF60;
+  --green-dark:#14a34f;
+  --cyan:#00C4D4;
+  --cyan-dark:#00a8b8;
+  --pink:#E91E8C;
+  --yellow:#FFD600;
+  --white:#fff;
+  --off-white:#f8faf9;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Nunito',sans-serif;color:#222;overflow-x:hidden;background:var(--off-white)}
+
+/* ═══ MOBILE-FIRST BASE ═══ */
+
+.hero{
+  background:var(--green);
+  color:var(--white);
+  text-align:center;
+  padding:2.8rem 1.2rem 3.5rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:36px;
+  background:var(--off-white);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+.aus-icon{
+  width:48px;height:auto;margin-bottom:.8rem;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.15));
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero h1{
+  font-family:'Fredoka',sans-serif;
+  font-size:1.7rem;font-weight:700;
+  margin-bottom:.5rem;letter-spacing:-.3px;
+}
+.hero h1 .flower{color:var(--pink);font-size:.75em}
+.hero p{
+  font-size:.95rem;max-width:440px;margin:0 auto 1.8rem;
+  line-height:1.55;opacity:.95;padding:0 .4rem;
+}
+.cta-row{display:flex;flex-direction:column;gap:.7rem;padding:0 .8rem}
+.cta-btn{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.95rem 1.6rem;border-radius:50px;
+  font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
+  text-decoration:none;min-height:50px;
+  transition:transform .15s,box-shadow .15s;
+}
+.cta-btn:active{transform:scale(.97)}
+.cta-btn.tokopedia{background:var(--white);color:var(--green-dark)}
+.cta-btn.shopee{background:var(--white);color:var(--pink)}
+.dino-left,.dino-right{display:none}
+
+/* ═══ REVIEWS ═══ */
+.reviews{
+  background:var(--cyan);color:var(--white);
+  text-align:center;padding:2.8rem 1.2rem 3.5rem;
+  position:relative;overflow:hidden;
+}
+.reviews::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:36px;
+  background:var(--off-white);
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+.reviews h2{
+  font-family:'Fredoka',sans-serif;
+  font-size:1.6rem;font-weight:700;margin-bottom:.2rem;
+}
+.stars{font-size:1.8rem;color:var(--yellow);margin-bottom:.8rem;letter-spacing:3px}
+.review-stat{
+  display:inline-block;background:var(--white);color:var(--cyan-dark);
+  border-radius:14px;padding:.9rem 1.6rem;
+  font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;
+  box-shadow:0 4px 14px rgba(0,0,0,.1);margin-bottom:1.6rem;
+}
+.review-stat .big{font-size:2.2rem;font-weight:700;display:block;line-height:1.1}
+
+/* Horizontal swipe cards on mobile */
+.review-cards{
+  display:flex;gap:.8rem;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding:0 1rem 1rem;margin:0 -.4rem 1rem;
+  scrollbar-width:none;
+}
+.review-cards::-webkit-scrollbar{display:none}
+.review-card{
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:14px;padding:1rem 1.1rem;
+  min-width:250px;max-width:280px;flex-shrink:0;
+  scroll-snap-align:center;text-align:left;
+}
+.review-card .card-stars{color:var(--yellow);font-size:.85rem;margin-bottom:.3rem}
+.review-card .card-text{font-size:.88rem;line-height:1.5;opacity:.95}
+.review-card .card-author{font-size:.78rem;opacity:.65;margin-top:.4rem}
+
+.scroll-hint{display:flex;gap:6px;justify-content:center;margin-bottom:1.4rem}
+.scroll-hint span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .2s}
+.scroll-hint span.active{background:var(--white)}
+
+.cta-row-2{display:flex;flex-direction:column;gap:.7rem;padding:0 .8rem}
+.cta-btn-2{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.85rem 1.6rem;border-radius:50px;
+  font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;
+  text-decoration:none;min-height:50px;transition:transform .15s;
+}
+.cta-btn-2:active{transform:scale(.97)}
+.cta-btn-2.tokopedia{background:var(--white);color:var(--green-dark)}
+.cta-btn-2.shopee{background:var(--white);color:var(--pink)}
+
+.blob{position:absolute;border-radius:50%;opacity:.2;pointer-events:none}
+.reviews .blob-1{width:80px;height:80px;background:var(--pink);top:16px;left:-24px}
+.reviews .blob-2{width:60px;height:60px;background:var(--pink);bottom:70px;right:-16px}
+
+footer{text-align:center;padding:2rem 1.2rem;font-size:.85rem;color:#666}
+footer a{color:var(--green);text-decoration:none;font-weight:600}
+
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ═══ TABLET (>= 580px) ═══ */
+@media(min-width:580px){
+  .hero{padding:3.5rem 2rem 4.5rem}
+  .hero::after{height:50px}
+  .hero h1{font-size:2.2rem}
+  .hero p{font-size:1.05rem;max-width:500px}
+  .cta-row,.cta-row-2{flex-direction:row;justify-content:center;padding:0}
+  .cta-btn,.cta-btn-2{min-width:180px}
+  .reviews{padding:3.5rem 2rem 4.5rem}
+  .reviews::after{height:50px}
+  .reviews h2{font-size:2rem}
+  .stars{font-size:2.2rem}
+  .review-cards{overflow-x:visible;flex-wrap:wrap;justify-content:center;padding:0;margin:0 auto 2rem;max-width:700px}
+  .review-card{min-width:200px;max-width:210px}
+  .scroll-hint{display:none}
+}
+
+/* ═══ DESKTOP (>= 900px) ═══ */
+@media(min-width:900px){
+  .hero{padding:4.5rem 2rem 5.5rem}
+  .hero::after{height:60px}
+  .hero h1{font-size:3rem}
+  .hero p{font-size:1.2rem;max-width:560px}
+  .aus-icon{width:64px}
+  .cta-btn{padding:.95rem 2.4rem;font-size:1.05rem}
+  .cta-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+  .dino-left,.dino-right{
+    display:block;position:absolute;bottom:65px;
+    font-size:72px;line-height:1;
+    animation:wiggle 4s ease-in-out infinite;
+  }
+  .dino-left{left:4%}
+  .dino-right{right:4%;animation-delay:1s}
+  @keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+  .reviews{padding:5rem 2rem 5.5rem}
+  .reviews::after{height:60px}
+  .reviews h2{font-size:2.8rem}
+  .review-stat .big{font-size:2.6rem}
+  .review-cards{max-width:900px;gap:1.2rem}
+  .review-card{max-width:260px;min-width:240px;padding:1.2rem 1.4rem}
+  .review-card:hover{transform:translateY(-4px)}
+  .cta-btn-2{padding:.9rem 2.2rem;font-size:1rem}
+  .cta-btn-2:hover{transform:translateY(-3px)}
+  .blob-1{width:140px!important;height:140px!important}
+  .blob-2{width:100px!important;height:100px!important}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="dino-left">🦖</div>
+  <div class="dino-right">🦕</div>
+  <svg class="aus-icon" viewBox="0 0 100 80" fill="var(--yellow)"><ellipse cx="50" cy="40" rx="40" ry="30"/><text x="50" y="46" text-anchor="middle" font-size="28" fill="var(--green)">🇦🇺</text></svg>
+  <h1 class="fade-up">SHOP WITH ALIA <span class="flower">🌸</span></h1>
+  <p class="fade-up" style="transition-delay:.08s">Hi, my name is Alia. I help bring Australian goods, mainly formula milk &amp; sunscreen, to Indonesian families at a reasonable price. Trusted and reliable.</p>
+  <div class="cta-row fade-up" style="transition-delay:.16s">
+    <a href="#" class="cta-btn tokopedia">🛒 Tokopedia</a>
+    <a href="#" class="cta-btn shopee">🛍️ Shopee</a>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <h2 class="fade-up">100% Satisfaction</h2>
+  <div class="stars fade-up" style="transition-delay:.05s">★★★★★</div>
+  <div class="review-stat fade-up" style="transition-delay:.1s">
+    <span class="big">993+</span>5-star reviews since Nov 2022
+  </div>
+  <div class="review-cards fade-up" style="transition-delay:.14s">
+    <div class="review-card">
+      <div class="card-stars">★★★★★</div>
+      <div class="card-text">Hairspray nya bagus, tahan tapi tidak kaku. Seller sangat ramah dan cepat pengirimannya.</div>
+      <div class="card-author">- Lyly</div>
+    </div>
+    <div class="review-card">
+      <div class="card-stars">★★★★★</div>
+      <div class="card-text">Fast response &amp; barang sesuai.</div>
+      <div class="card-author">- c***l</div>
+    </div>
+    <div class="review-card">
+      <div class="card-stars">★★★★★</div>
+      <div class="card-text">Respon dari penjual sangat mantap &amp; cepat. Packingan sangat memuaskan. Thumbs up!</div>
+      <div class="card-author">- R***a</div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span class="active"></span><span></span><span></span></div>
+  <div class="cta-row-2 fade-up" style="transition-delay:.18s">
+    <a href="#" class="cta-btn-2 tokopedia">Shop at Tokopedia</a>
+    <a href="#" class="cta-btn-2 shopee">Shop at Shopee</a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="mailto:happytohelp@tokocurahaustralia.com">happytohelp@tokocurahaustralia.com</a></p>
+  <p style="margin-top:.4rem">&copy; 2026 Toko Curah Australia</p>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.12});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+const cards=document.querySelector('.review-cards');
+const dots=document.querySelectorAll('.scroll-hint span');
+if(cards&&dots.length){
+  cards.addEventListener('scroll',()=>{
+    const i=Math.round(cards.scrollLeft/(cards.scrollWidth/3));
+    dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+  },{passive:true});
+}
+</script>
+</body>
+</html>
