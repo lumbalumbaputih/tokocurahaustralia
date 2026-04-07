@@ -98,7 +98,7 @@ body{
 }
 .hero .orb-1{width:180px;height:180px;background:var(--yellow);top:-40px;left:-55px}
 .hero .orb-2{width:120px;height:120px;background:var(--pink);right:-25px;top:18%}
-.hero .orb-3{width:220px;height:220px;background:#0ca64f;right:-90px;bottom:-75px}
+.hero .orb-3{width:220px;height:220px;background:var(--green);right:-90px;bottom:-75px}
 .scroll-down{
   margin-top:1.2rem;
   font-size:.9rem;
@@ -224,7 +224,7 @@ body{
 </section>
 
 <script>
-const CARD_STAGGER_DELAY=0.09;
+const CARD_STAGGER_DELAY = 0.09;
 const pageObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>entry.target.classList.toggle('active',entry.isIntersecting));
 },{threshold:.55});
