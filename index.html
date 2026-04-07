@@ -185,16 +185,23 @@ body{
 .reviews .blob-1{width:140px;height:140px;background:var(--pink);top:-26px;left:-28px}
 .reviews .blob-2{width:110px;height:110px;background:var(--yellow);bottom:-26px;right:4%}
 .site-footer{
-  margin-top:1.2rem;
+  position:absolute;
+  left:50%;
+  bottom:52px;
+  transform:translateX(-50%);
+  width:min(980px,calc(100% - 2.4rem));
+  text-align:center;
   font-size:.86rem;
   line-height:1.45;
   opacity:.95;
+  z-index:2;
 }
 .site-footer a{
   color:var(--white);
   text-decoration:none;
   font-weight:700;
 }
+.site-footer p + p{margin-top:.12rem}
 
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
@@ -254,10 +261,10 @@ body{
       <a href="https://www.tokopedia.com/tokocurahaustralia" class="cta-btn-2 tokopedia">Shop at Tokopedia</a>
       <a href="https://shopee.co.id/tokocurahaustralia" class="cta-btn-2 shopee">Shop at Shopee</a>
     </div>
-    <div class="site-footer">
-      <p><a href="mailto:happytohelp@tokocurahaustralia.com">happytohelp@tokocurahaustralia.com</a></p>
-      <p>© 2026 Toko Curah Australia</p>
-    </div>
+  </div>
+  <div class="site-footer">
+    <p><a href="mailto:happytohelp@tokocurahaustralia.com">happytohelp@tokocurahaustralia.com</a></p>
+    <p>© 2026 Toko Curah Australia</p>
   </div>
 </section>
 
