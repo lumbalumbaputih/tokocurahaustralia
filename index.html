@@ -19,235 +19,265 @@
   --off-white:#f8faf9;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Nunito',sans-serif;color:#222;overflow-x:hidden;background:var(--off-white)}
-
-/* ═══ MOBILE-FIRST BASE ═══ */
-
-.hero{
-  background:var(--green);
-  color:var(--white);
-  text-align:center;
-  padding:2.8rem 1.2rem 3.5rem;
-  position:relative;
-  overflow:hidden;
+body{
+  font-family:'Nunito',sans-serif;
+  color:#222;
+  overflow-x:hidden;
+  overflow-y:auto;
+  height:100vh;
+  scroll-snap-type:y mandatory;
 }
+
+.page{
+  min-height:100vh;
+  min-height:100svh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  padding:1.2rem;
+}
+.page-content{
+  width:min(980px,100%);
+  position:relative;
+  z-index:2;
+  opacity:0;
+  transform:translateY(22px) scale(.98);
+  transition:opacity .75s ease,transform .75s ease;
+}
+.page.active .page-content{opacity:1;transform:translateY(0) scale(1)}
+
+.hero{background:var(--green);color:var(--white)}
 .hero::after{
-  content:'';position:absolute;bottom:-2px;left:0;right:0;height:36px;
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:46px;
   background:var(--cyan);
   clip-path:ellipse(55% 100% at 50% 100%);
+  z-index:1;
 }
-.aus-icon{
-  width:48px;height:auto;margin-bottom:.8rem;
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.15));
-  animation:float 3s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .hero h1{
   font-family:'Fredoka',sans-serif;
-  font-size:1.7rem;font-weight:700;
-  margin-bottom:.5rem;letter-spacing:-.3px;
+  font-size:clamp(2rem,6vw,4.2rem);
+  font-weight:700;
+  letter-spacing:-.3px;
 }
-.hero h1 .flower{color:var(--pink);font-size:.75em}
+.hero .flower{color:var(--pink);font-size:.8em}
 .hero p{
-  font-size:.95rem;max-width:440px;margin:0 auto 1.8rem;
-  line-height:1.55;opacity:.95;padding:0 .4rem;
+  font-size:clamp(1rem,2.4vw,1.28rem);
+  max-width:700px;
+  margin:.8rem auto 1.5rem;
+  line-height:1.55;
+  opacity:.95;
 }
-.cta-row{display:flex;flex-direction:column;gap:.7rem;padding:0 .8rem}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem}
 .cta-btn{
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
-  padding:.95rem 1.6rem;border-radius:50px;
-  font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
-  text-decoration:none;min-height:50px;
-  transition:transform .15s,box-shadow .15s;
+  display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
+  padding:.9rem 1.6rem;border-radius:999px;
+  text-decoration:none;font-weight:700;
+  font-family:'Fredoka',sans-serif;
+  min-width:170px;
+  transition:transform .2s ease,box-shadow .2s ease;
 }
-.cta-btn:active{transform:scale(.97)}
 .cta-btn.tokopedia{background:var(--white);color:var(--green-dark)}
 .cta-btn.shopee{background:var(--white);color:var(--pink)}
-.dino-left,.dino-right{display:none}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.18)}
 
-/* ═══ REVIEWS ═══ */
-.reviews{
-  background:var(--cyan);color:var(--white);
-  text-align:center;padding:2.8rem 1.2rem 3.5rem;
-  position:relative;overflow:hidden;
+.aus-icon{
+  width:64px;height:auto;margin-bottom:.8rem;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.2));
+  animation:float 3s ease-in-out infinite;
 }
+.dino-left,.dino-right{
+  position:absolute;
+  bottom:12%;
+  font-size:clamp(2.5rem,7vw,5.3rem);
+  line-height:1;
+  animation:wiggle 4s ease-in-out infinite;
+}
+.dino-left{left:5%}
+.dino-right{right:5%;animation-delay:1s}
+.hero-bg-orb{
+  position:absolute;border-radius:50%;opacity:.24;pointer-events:none;
+  animation:drift 8s ease-in-out infinite;
+}
+.hero .orb-1{width:180px;height:180px;background:var(--yellow);top:-40px;left:-55px}
+.hero .orb-2{width:120px;height:120px;background:var(--pink);right:-25px;top:18%}
+.hero .orb-3{width:220px;height:220px;background:var(--green);right:-90px;bottom:-75px}
+.scroll-down{
+  margin-top:1.2rem;
+  font-size:.9rem;
+  opacity:.9;
+  letter-spacing:.4px;
+  animation:bounce 1.9s ease-in-out infinite;
+}
+
+.reviews{background:var(--cyan);color:var(--white)}
 .reviews::after{
-  content:'';position:absolute;bottom:-2px;left:0;right:0;height:36px;
-  background:var(--off-white);
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:46px;
+  background:var(--white);
   clip-path:ellipse(55% 100% at 50% 100%);
+  z-index:1;
 }
 .reviews h2{
   font-family:'Fredoka',sans-serif;
-  font-size:1.6rem;font-weight:700;margin-bottom:.2rem;
+  font-size:clamp(1.9rem,5vw,3.5rem);
+  margin-bottom:.3rem;
 }
-.stars{font-size:1.8rem;color:var(--yellow);margin-bottom:.8rem;letter-spacing:3px}
+.stars{
+  color:var(--yellow);
+  letter-spacing:2px;
+  font-size:clamp(1.5rem,4vw,2.5rem);
+}
 .review-stat{
   display:inline-block;background:var(--white);color:var(--cyan-dark);
-  border-radius:14px;padding:.9rem 1.6rem;
+  border-radius:15px;padding:.85rem 1.2rem;
   font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;
-  box-shadow:0 4px 14px rgba(0,0,0,.1);margin-bottom:1.6rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.14);margin:.9rem 0 1.1rem;
 }
-.review-stat .big{font-size:2.2rem;font-weight:700;display:block;line-height:1.1}
-
-/* Horizontal swipe cards on mobile */
+.review-stat .big{display:block;font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.05}
 .review-cards{
-  display:flex;gap:.8rem;
-  overflow-x:auto;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  padding:0 1rem 1rem;margin:0 -.4rem 1rem;
-  scrollbar-width:none;
+  display:flex;gap:.8rem;overflow-x:auto;padding:.2rem .2rem .9rem;
+  scrollbar-width:none;justify-content:flex-start;
 }
 .review-cards::-webkit-scrollbar{display:none}
 .review-card{
-  background:rgba(255,255,255,.15);
+  background:rgba(255,255,255,.18);
+  border:1px solid rgba(255,255,255,.32);
   backdrop-filter:blur(6px);
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:14px;padding:1rem 1.1rem;
-  min-width:250px;max-width:280px;flex-shrink:0;
-  scroll-snap-align:center;text-align:left;
+  border-radius:14px;
+  min-width:230px;
+  max-width:280px;
+  text-align:left;
+  padding:.95rem 1rem;
+  transform:translateY(16px);
+  opacity:0;
+  transition:opacity .55s ease,transform .55s ease;
 }
-.review-card .card-stars{color:var(--yellow);font-size:.85rem;margin-bottom:.3rem}
-.review-card .card-text{font-size:.88rem;line-height:1.5;opacity:.95}
-.review-card .card-author{font-size:.78rem;opacity:.65;margin-top:.4rem}
-
-.scroll-hint{display:flex;gap:6px;justify-content:center;margin-bottom:1.4rem}
-.scroll-hint span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .2s}
-.scroll-hint span.active{background:var(--white)}
-
-.cta-row-2{display:flex;flex-direction:column;gap:.7rem;padding:0 .8rem}
+.page.active .review-card{opacity:1;transform:translateY(0)}
+.card-stars{color:var(--yellow);font-size:.85rem;margin-bottom:.3rem}
+.card-text{font-size:.88rem;line-height:1.5}
+.card-author{font-size:.78rem;opacity:.72;margin-top:.35rem}
+.cta-row-2{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
 .cta-btn-2{
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
-  padding:.85rem 1.6rem;border-radius:50px;
-  font-family:'Fredoka',sans-serif;font-weight:600;font-size:.95rem;
-  text-decoration:none;min-height:50px;transition:transform .15s;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:.8rem 1.5rem;border-radius:999px;font-weight:700;
+  font-family:'Fredoka',sans-serif;text-decoration:none;
+  background:var(--white);
+  transition:transform .2s ease,box-shadow .2s ease;
 }
-.cta-btn-2:active{transform:scale(.97)}
-.cta-btn-2.tokopedia{background:var(--white);color:var(--green-dark)}
-.cta-btn-2.shopee{background:var(--white);color:var(--pink)}
-
-.blob{position:absolute;border-radius:50%;opacity:.2;pointer-events:none}
-.reviews .blob-1{width:80px;height:80px;background:var(--pink);top:16px;left:-24px}
-.reviews .blob-2{width:60px;height:60px;background:var(--pink);bottom:70px;right:-16px}
-
-footer{text-align:center;padding:2rem 1.2rem;font-size:.85rem;color:#666}
-footer a{color:var(--green);text-decoration:none;font-weight:600}
-
-.fade-up{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-
-/* ═══ TABLET (>= 580px) ═══ */
-@media(min-width:580px){
-  .hero{padding:3.5rem 2rem 4.5rem}
-  .hero::after{height:50px}
-  .hero h1{font-size:2.2rem}
-  .hero p{font-size:1.05rem;max-width:500px}
-  .cta-row,.cta-row-2{flex-direction:row;justify-content:center;padding:0}
-  .cta-btn,.cta-btn-2{min-width:180px}
-  .reviews{padding:3.5rem 2rem 4.5rem}
-  .reviews::after{height:50px}
-  .reviews h2{font-size:2rem}
-  .stars{font-size:2.2rem}
-  .review-cards{overflow-x:visible;flex-wrap:wrap;justify-content:center;padding:0;margin:0 auto 2rem;max-width:700px}
-  .review-card{min-width:200px;max-width:210px}
-  .scroll-hint{display:none}
+.cta-btn-2.tokopedia{color:var(--green-dark)}
+.cta-btn-2.shopee{color:var(--pink)}
+.cta-btn-2:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.blob{position:absolute;border-radius:50%;opacity:.2;pointer-events:none;animation:drift 9s ease-in-out infinite}
+.reviews .blob-1{width:140px;height:140px;background:var(--pink);top:-26px;left:-28px}
+.reviews .blob-2{width:110px;height:110px;background:var(--yellow);bottom:-26px;right:4%}
+.site-footer{
+  position:absolute;
+  left:50%;
+  bottom:52px;
+  transform:translateX(-50%);
+  width:min(980px,calc(100% - 2.4rem));
+  text-align:center;
+  font-size:.86rem;
+  line-height:1.45;
+  opacity:.95;
+  z-index:2;
 }
+.site-footer a{
+  color:var(--white);
+  text-decoration:none;
+  font-weight:700;
+}
+.site-footer p + p{margin-top:.12rem}
 
-/* ═══ DESKTOP (>= 900px) ═══ */
-@media(min-width:900px){
-  .hero{padding:4.5rem 2rem 5.5rem}
-  .hero::after{height:60px}
-  .hero h1{font-size:3rem}
-  .hero p{font-size:1.2rem;max-width:560px}
-  .aus-icon{width:64px}
-  .cta-btn{padding:.95rem 2.4rem;font-size:1.05rem}
-  .cta-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.18)}
-  .dino-left,.dino-right{
-    display:block;position:absolute;bottom:65px;
-    font-size:72px;line-height:1;
-    animation:wiggle 4s ease-in-out infinite;
-  }
-  .dino-left{left:4%}
-  .dino-right{right:4%;animation-delay:1s}
-  @keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
-  .reviews{padding:5rem 2rem 5.5rem}
-  .reviews::after{height:60px}
-  .reviews h2{font-size:2.8rem}
-  .review-stat .big{font-size:2.6rem}
-  .review-cards{max-width:900px;gap:1.2rem}
-  .review-card{max-width:260px;min-width:240px;padding:1.2rem 1.4rem}
-  .review-card:hover{transform:translateY(-4px)}
-  .cta-btn-2{padding:.9rem 2.2rem;font-size:1rem}
-  .cta-btn-2:hover{transform:translateY(-3px)}
-  .blob-1{width:140px!important;height:140px!important}
-  .blob-2{width:100px!important;height:100px!important}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(10px,-10px)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+@media(min-width:780px){
+  .review-cards{justify-content:center;overflow-x:visible}
 }
 </style>
 </head>
 <body>
 
-<section class="hero">
+<section class="page hero">
+  <div class="hero-bg-orb orb-1"></div>
+  <div class="hero-bg-orb orb-2"></div>
+  <div class="hero-bg-orb orb-3"></div>
   <div class="dino-left">🦖</div>
   <div class="dino-right">🦕</div>
-  <svg class="aus-icon" viewBox="0 0 100 80" fill="var(--yellow)"><ellipse cx="50" cy="40" rx="40" ry="30"/><text x="50" y="46" text-anchor="middle" font-size="28" fill="var(--green)">🇦🇺</text></svg>
-  <h1 class="fade-up">SHOP WITH ALIA <span class="flower">🌸</span></h1>
-  <p class="fade-up" style="transition-delay:.08s">Hi, my name is Alia. I help bring Australian goods, mainly formula milk &amp; sunscreen, to Indonesian families at a reasonable price. Trusted and reliable.</p>
-  <div class="cta-row fade-up" style="transition-delay:.16s">
-    <a href="https://www.tokopedia.com/tokocurahaustralia" class="cta-btn tokopedia">🛒 Tokopedia</a>
-    <a href="https://shopee.co.id/tokocurahaustralia" class="cta-btn shopee">🛍️ Shopee</a>
+  <div class="page-content">
+    <svg class="aus-icon" viewBox="0 0 100 80" fill="var(--yellow)"><ellipse cx="50" cy="40" rx="40" ry="30"/><text x="50" y="46" text-anchor="middle" font-size="28" fill="var(--green)">🇦🇺</text></svg>
+    <h1>SHOP WITH ALIA <span class="flower">🌸</span></h1>
+    <p>Hi, my name is Alia. I help bring Australian goods, mainly formula milk &amp; sunscreen, to Indonesian families at a reasonable price. Trusted and reliable.</p>
+    <div class="cta-row">
+      <a href="https://www.tokopedia.com/tokocurahaustralia" class="cta-btn tokopedia">🛒 Tokopedia</a>
+      <a href="https://shopee.co.id/tokocurahaustralia" class="cta-btn shopee">🛍️ Shopee</a>
+    </div>
+    <div class="scroll-down">Scroll down ↓</div>
   </div>
 </section>
 
-<section class="reviews">
+<section class="page reviews">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
-  <h2 class="fade-up">100% Satisfaction</h2>
-  <div class="stars fade-up" style="transition-delay:.05s">★★★★★</div>
-  <div class="review-stat fade-up" style="transition-delay:.1s">
-    <span class="big">993+</span>5-star reviews since Nov 2022
+  <div class="page-content">
+    <h2>100% Satisfaction</h2>
+    <div class="stars">★★★★★</div>
+    <div class="review-stat"><span class="big">993+</span>5-star reviews since Nov 2022</div>
+    <div class="review-cards">
+      <div class="review-card">
+        <div class="card-stars">★★★★★</div>
+        <div class="card-text">Hairspray nya bagus, tahan tapi tidak kaku. Seller sangat ramah dan cepat pengirimannya.</div>
+        <div class="card-author">- Lyly</div>
+      </div>
+      <div class="review-card">
+        <div class="card-stars">★★★★★</div>
+        <div class="card-text">Fast response &amp; barang sesuai.</div>
+        <div class="card-author">- c***l</div>
+      </div>
+      <div class="review-card">
+        <div class="card-stars">★★★★★</div>
+        <div class="card-text">Respon dari penjual sangat mantap &amp; cepat. Packingan sangat memuaskan. Thumbs up!</div>
+        <div class="card-author">- R***a</div>
+      </div>
+    </div>
+    <div class="cta-row-2">
+      <a href="https://www.tokopedia.com/tokocurahaustralia" class="cta-btn-2 tokopedia">Shop at Tokopedia</a>
+      <a href="https://shopee.co.id/tokocurahaustralia" class="cta-btn-2 shopee">Shop at Shopee</a>
+    </div>
   </div>
-  <div class="review-cards fade-up" style="transition-delay:.14s">
-    <div class="review-card">
-      <div class="card-stars">★★★★★</div>
-      <div class="card-text">Hairspray nya bagus, tahan tapi tidak kaku. Seller sangat ramah dan cepat pengirimannya.</div>
-      <div class="card-author">- Lyly</div>
-    </div>
-    <div class="review-card">
-      <div class="card-stars">★★★★★</div>
-      <div class="card-text">Fast response &amp; barang sesuai.</div>
-      <div class="card-author">- c***l</div>
-    </div>
-    <div class="review-card">
-      <div class="card-stars">★★★★★</div>
-      <div class="card-text">Respon dari penjual sangat mantap &amp; cepat. Packingan sangat memuaskan. Thumbs up!</div>
-      <div class="card-author">- R***a</div>
-    </div>
-  </div>
-  <div class="scroll-hint"><span class="active"></span><span></span><span></span></div>
-  <div class="cta-row-2 fade-up" style="transition-delay:.18s">
-    <a href="https://www.tokopedia.com/tokocurahaustralia" class="cta-btn-2 tokopedia">Shop at Tokopedia</a>
-    <a href="https://shopee.co.id/tokocurahaustralia" class="cta-btn-2 shopee">Shop at Shopee</a>
+  <div class="site-footer">
+    <p><a href="mailto:happytohelp@tokocurahaustralia.com">happytohelp@tokocurahaustralia.com</a></p>
+    <p>© 2026 Toko Curah Australia</p>
   </div>
 </section>
 
-<footer>
-  <p><a href="mailto:happytohelp@tokocurahaustralia.com">happytohelp@tokocurahaustralia.com</a></p>
-  <p style="margin-top:.4rem">&copy; 2026 Toko Curah Australia</p>
-</footer>
-
 <script>
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:.12});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-
-const cards=document.querySelector('.review-cards');
-const dots=document.querySelectorAll('.scroll-hint span');
-if(cards&&dots.length){
-  cards.addEventListener('scroll',()=>{
-    const i=Math.round(cards.scrollLeft/(cards.scrollWidth/3));
-    dots.forEach((d,j)=>d.classList.toggle('active',j===i));
-  },{passive:true});
-}
+const CARD_STAGGER_DELAY = 0.09;
+const ACTIVATION_THRESHOLD = 0.55;
+const pageObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>entry.target.classList.toggle('active',entry.isIntersecting));
+},{threshold:ACTIVATION_THRESHOLD});
+document.querySelectorAll('.page').forEach(section=>pageObserver.observe(section));
+document.querySelectorAll('.review-card').forEach((card,index)=>{
+  card.style.transitionDelay=`${index*CARD_STAGGER_DELAY}s`;
+});
 </script>
 </body>
 </html>
