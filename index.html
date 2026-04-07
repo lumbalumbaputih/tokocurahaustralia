@@ -16,6 +16,7 @@
   --pink:#E91E8C;
   --yellow:#FFD600;
   --white:#fff;
+  --off-white:#f8faf9;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
@@ -51,6 +52,17 @@ body{
 .page.active .page-content{opacity:1;transform:translateY(0) scale(1)}
 
 .hero{background:var(--green);color:var(--white)}
+.hero::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:46px;
+  background:var(--cyan);
+  clip-path:ellipse(55% 100% at 50% 100%);
+  z-index:1;
+}
 .hero h1{
   font-family:'Fredoka',sans-serif;
   font-size:clamp(2rem,6vw,4.2rem);
@@ -108,6 +120,17 @@ body{
 }
 
 .reviews{background:var(--cyan);color:var(--white)}
+.reviews::after{
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:46px;
+  background:var(--white);
+  clip-path:ellipse(55% 100% at 50% 100%);
+  z-index:1;
+}
 .reviews h2{
   font-family:'Fredoka',sans-serif;
   font-size:clamp(1.9rem,5vw,3.5rem);
@@ -161,6 +184,17 @@ body{
 .blob{position:absolute;border-radius:50%;opacity:.2;pointer-events:none;animation:drift 9s ease-in-out infinite}
 .reviews .blob-1{width:140px;height:140px;background:var(--pink);top:-26px;left:-28px}
 .reviews .blob-2{width:110px;height:110px;background:var(--yellow);bottom:-26px;right:4%}
+.site-footer{
+  margin-top:1.2rem;
+  font-size:.86rem;
+  line-height:1.45;
+  opacity:.95;
+}
+.site-footer a{
+  color:var(--white);
+  text-decoration:none;
+  font-weight:700;
+}
 
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
@@ -219,6 +253,10 @@ body{
     <div class="cta-row-2">
       <a href="https://www.tokopedia.com/tokocurahaustralia" class="cta-btn-2 tokopedia">Shop at Tokopedia</a>
       <a href="https://shopee.co.id/tokocurahaustralia" class="cta-btn-2 shopee">Shop at Shopee</a>
+    </div>
+    <div class="site-footer">
+      <p><a href="mailto:happytohelp@tokocurahaustralia.com">happytohelp@tokocurahaustralia.com</a></p>
+      <p>© 2026 Toko Curah Australia</p>
     </div>
   </div>
 </section>
