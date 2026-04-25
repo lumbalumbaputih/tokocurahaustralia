@@ -22,6 +22,12 @@
       --navy:#1A3A7A;
       --cream:#FBF4E4;
       --ink:#1a1a1a;
+      --navy-muted:#2d4070;
+      --text-muted:#44506e;
+      --text-soft:#444;
+      --text-body:#2c2c2c;
+      --text-subtle:#5f6f95;
+      --border-faint:#c8bda6;
       --yellow-tint:#FDEBB4;
       --sky-tint:#B8E6F2;
       --red-tint:#F4B5AB;
@@ -95,7 +101,7 @@
       max-width:700px;
       margin:.9rem auto 0;
       line-height:1.65;
-      color:#2d4070;
+      color:var(--navy-muted);
     }
     .hero-trust{
       display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;
@@ -176,7 +182,7 @@
       margin-bottom:.55rem;
     }
     .section-sub{
-      color:#44506e;
+      color:var(--text-muted);
       max-width:640px;
       margin:0 auto 2rem;
       font-size:1.02rem;line-height:1.65;
@@ -204,7 +210,7 @@
       color:var(--navy);
       margin-bottom:.5rem;
     }
-    .product-card p{font-size:.92rem;color:#444;line-height:1.65}
+    .product-card p{font-size:.92rem;color:var(--text-soft);line-height:1.65}
     .trust-grid{
       display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;
     }
@@ -280,11 +286,11 @@
     }
     .page.active .review-card{opacity:1;transform:translateY(0)}
     .card-stars{color:var(--red);font-size:.85rem;margin-bottom:.35rem}
-    .card-text{font-size:.88rem;line-height:1.55;color:#2c2c2c}
+    .card-text{font-size:.88rem;line-height:1.55;color:var(--text-body)}
     .card-author{
       font-size:.72rem;
       font-family:'JetBrains Mono',ui-monospace,monospace;
-      color:#5f6f95;
+      color:var(--text-subtle);
       margin-top:.5rem;
       text-transform:uppercase;
       letter-spacing:.06em;
@@ -313,7 +319,7 @@
       box-shadow:var(--shadow-soft);
       padding:.2rem 1rem;
     }
-    .faq-item{border-bottom:1px dashed #c8bda6;padding:.2rem 0}
+    .faq-item{border-bottom:1px dashed var(--border-faint);padding:.2rem 0}
     .faq-item:last-child{border-bottom:none}
     .faq-q{
       width:100%;background:none;border:none;
@@ -341,7 +347,7 @@
     .faq-a{
       max-height:0;overflow:hidden;
       transition:max-height .4s ease,padding .3s ease;
-      font-size:.95rem;color:#444;line-height:1.7;
+      font-size:.95rem;color:var(--text-soft);line-height:1.7;
     }
     .faq-item.open .faq-a{max-height:220px;padding-bottom:1rem}
     .faq-a a{color:var(--red);font-weight:800;text-decoration:none}
