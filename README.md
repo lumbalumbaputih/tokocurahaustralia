@@ -4,7 +4,7 @@ A responsive single-page landing site for **Toko Curah Australia (Shop with Alia
 
 ## Overview
 
-This project is a lightweight static website built as one HTML file (`index.html`) with:
+This project is a lightweight static website centered on `index.html`, with additional brand/design-system assets:
 
 - Inline CSS (mobile-first responsive layout)
 - Small vanilla JavaScript interactions
@@ -25,9 +25,26 @@ This project is a lightweight static website built as one HTML file (`index.html
 
 ```text
 .
-├── index.html   # Full page markup, styling, and behavior
+├── index.html                         # Full page markup, styling, and behavior
+├── docs/
+│   └── design-system/
+│       ├── tca-design-system.html     # TCA design system reference
+│       └── assets/
+│           ├── logo-tca.svg
+│           ├── logo-tca-cream.svg
+│           ├── logo-tca-green.svg
+│           ├── logo-tca-magenta.svg
+│           ├── logo-tca-navy.svg
+│           ├── logo-tca-red.svg
+│           ├── logo-tca-sky.svg
+│           └── logo-tca-yellow.svg
 └── README.md
 ```
+
+## Brand Assets
+
+- Design system file: `docs/design-system/tca-design-system.html`
+- Logo files: `docs/design-system/assets/`
 
 ## Run Locally
 
